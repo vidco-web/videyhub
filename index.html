@@ -10,12 +10,13 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     background: #ffffff;
-    color: black;
 }
 
 .header {
     padding: 15px;
     border-bottom: 1px solid #ddd;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .start-screen {
@@ -34,38 +35,29 @@ body {
     cursor: pointer;
 }
 
-.loading {
-    display: none;
-    margin-top: 20px;
-    color: #666;
-}
-
 .video-container {
     display: none;
     width: 100%;
     max-width: 400px;
     margin: 20px auto 80px;
-    position: relative;
 }
 
 /* FOTO */
-..fake-video {
+.fake-video {
     width: 100%;
     aspect-ratio: 9 / 16;
     border-radius: 15px;
     overflow: hidden;
     position: relative;
     cursor: pointer;
-
-    background-image: url('foto.jpg');
-    background-size: cover;
-    background-position: center;
+    background: #000;
 }
 
 .fake-video img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
 }
 
 /* TOMBOL PLAY */
@@ -108,64 +100,86 @@ body {
     padding: 12px 20px;
     border-radius: 25px;
     text-decoration: none;
+    display: inline-block;
 }
 </style>
 </head>
 
 <body>
 
-<div class="header"><b>videy.co</b></div>
+<div class="header">videy.co</div>
 
 <div class="start-screen" id="startScreen">
     <h2>Lanjutkan Menonton Video?</h2>
     <p>Klik tombol di bawah untuk memulai.</p>
-    <button class="start-btn" onclick="startVideo()">▶ Mulai Menonton</button>
-    <div class="loading" id="loadingText">Memuat...</div>
+
+    <button class="start-btn" onclick="startVideo()">
+        ▶ Mulai Menonton
+    </button>
 </div>
 
 <div class="video-container" id="videoContainer">
 
-    <!-- FOTO SEPERTI VIDEO -->
+    <!-- FOTO -->
     <div class="fake-video" id="fakeVideo">
-        <img src="desain tanpa judul.jpg" alt="Thumbnail">
+
+        <!-- GAMBAR -->
+        <img src="foto.jpg" alt="Thumbnail">
+
+        <!-- ICON PLAY -->
         <div class="play-button"></div>
+
     </div>
 
 </div>
 
 <div class="telegram-bar" id="telegramBar">
-    <a href="#" onclick="joinTelegram()" class="telegram-btn">Join Telegram</a>
+    <a href="#" onclick="joinTelegram()" class="telegram-btn">
+        Join Telegram
+    </a>
 </div>
 
 <script>
+
 const ADS_LINK = "https://www.profitablecpmratenetwork.com/jc4bzkf1?key=51e86312c82641cb4638ec283e05655d";
 const TELEGRAM_LINK = "https://www.profitablecpmratenetwork.com/jc4bzkf1?key=51e86312c82641cb4638ec283e05655d";
 
 let lastAdTime = 0;
 
-// 🔒 Anti spam (8 detik sekali)
+// Anti spam popup
 function showAds() {
+
     let now = Date.now();
+
     if (now - lastAdTime > 8000) {
+
         lastAdTime = now;
+
         window.open(ADS_LINK, "_blank");
     }
 }
 
 // Start
 function startVideo() {
+
     showAds();
 
     document.getElementById("startScreen").style.display = "none";
+
     document.getElementById("videoContainer").style.display = "block";
+
     document.getElementById("telegramBar").style.display = "block";
 }
 
 // Telegram
 function joinTelegram() {
+
     showAds();
+
     setTimeout(() => {
+
         window.open(TELEGRAM_LINK, "_blank");
+
     }, 1000);
 }
 
@@ -174,22 +188,15 @@ window.onload = function() {
 
     const fakeVideo = document.getElementById("fakeVideo");
 
-    // Saat foto di klik
     fakeVideo.addEventListener("click", function() {
+
         showAds();
+
     });
 
-    // Klik layar mana saja
-    document.body.addEventListener("click", function(e) {
-        if (!e.target.classList.contains("telegram-btn")) {
-            showAds();
-        }
-    });
 };
-</script>
 
-<script src="<script src="https://pl29230728.profitablecpmratenetwork.com/98/f2/51/98f2512c0bf47d921ad3264f1ba5b987.js"></script>
-"></script>
+</script>
 
 </body>
 </html>
