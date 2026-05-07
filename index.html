@@ -6,152 +6,177 @@
 <title>Videy Clean White</title>
 
 <style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #ffffff;
+
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#fff;
 }
 
-.header {
-    padding: 15px;
-    border-bottom: 1px solid #ddd;
-    font-size: 20px;
-    font-weight: bold;
+/* HEADER */
+.header{
+    padding:15px;
+    border-bottom:1px solid #ddd;
+    font-size:20px;
+    font-weight:bold;
 }
 
-.start-screen {
-    text-align: center;
-    padding: 60px 20px;
+/* HALAMAN AWAL */
+.start-screen{
+    text-align:center;
+    padding:60px 20px;
 }
 
-.start-btn {
-    margin-top: 20px;
-    background: black;
-    color: white;
-    border: none;
-    padding: 14px 25px;
-    border-radius: 30px;
-    font-size: 16px;
-    cursor: pointer;
+.start-btn{
+    margin-top:20px;
+    background:black;
+    color:white;
+    border:none;
+    padding:14px 25px;
+    border-radius:30px;
+    font-size:16px;
+    cursor:pointer;
 }
 
-.video-container {
-    display: none;
-    width: 100%;
-    max-width: 400px;
-    margin: 20px auto 80px;
+/* CONTAINER VIDEO */
+.video-container{
+    display:none;
+    width:100%;
+    max-width:400px;
+    margin:20px auto 100px;
+    padding:0 10px;
+    box-sizing:border-box;
 }
 
 /* FOTO */
-.fake-video {
-    width: 100%;
-    aspect-ratio: 9 / 16;
-    border-radius: 15px;
-    overflow: hidden;
-    position: relative;
-    cursor: pointer;
-    background: #000;
+.fake-video{
+    width:100%;
+    aspect-ratio:9 / 16;
+    border-radius:20px;
+    overflow:hidden;
+    position:relative;
+    background:black;
 }
 
-.fake-video img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+/* GAMBAR */
+.fake-video img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
 }
 
 /* TOMBOL PLAY */
-.play-button {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80px;
-    height: 80px;
-    background: rgba(0,0,0,0.6);
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.play-button{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    
+    width:90px;
+    height:90px;
+
+    background:rgba(0,0,0,0.65);
+    border-radius:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    z-index:10;
 }
 
-.play-button::before {
-    content: "";
-    border-style: solid;
-    border-width: 15px 0 15px 25px;
-    border-color: transparent transparent transparent white;
-    margin-left: 5px;
+/* ICON PLAY */
+.play-button::before{
+    content:"";
+    margin-left:6px;
+
+    border-style:solid;
+    border-width:18px 0 18px 30px;
+    border-color:transparent transparent transparent white;
 }
 
-.telegram-bar {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background: #fff;
-    border-top: 1px solid #ddd;
-    padding: 10px;
-    text-align: center;
-    display: none;
+/* BAR TELEGRAM */
+.telegram-bar{
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    background:#fff;
+    border-top:1px solid #ddd;
+    padding:10px;
+    text-align:center;
+    display:none;
 }
 
-.telegram-btn {
-    background: #0088cc;
-    color: white;
-    padding: 12px 20px;
-    border-radius: 25px;
-    text-decoration: none;
-    display: inline-block;
+.telegram-btn{
+    background:#0088cc;
+    color:white;
+    padding:12px 20px;
+    border-radius:25px;
+    text-decoration:none;
+    display:inline-block;
 }
+
 </style>
 </head>
 
 <body>
 
-<div class="header">videy.co</div>
+<div class="header">
+    videy.co
+</div>
 
+<!-- HALAMAN AWAL -->
 <div class="start-screen" id="startScreen">
+
     <h2>Lanjutkan Menonton Video?</h2>
+
     <p>Klik tombol di bawah untuk memulai.</p>
 
     <button class="start-btn" onclick="startVideo()">
         ▶ Mulai Menonton
     </button>
+
 </div>
 
+<!-- VIDEO -->
 <div class="video-container" id="videoContainer">
 
-    <!-- FOTO -->
     <div class="fake-video" id="fakeVideo">
 
-        <!-- GAMBAR -->
+        <!-- FOTO -->
         <img src="foto.jpg" alt="Thumbnail">
 
-        <!-- ICON PLAY -->
+        <!-- TOMBOL PLAY -->
         <div class="play-button"></div>
 
     </div>
 
 </div>
 
+<!-- TELEGRAM -->
 <div class="telegram-bar" id="telegramBar">
-    <a href="#" onclick="joinTelegram()" class="telegram-btn">
+
+    <a href="#" class="telegram-btn" onclick="joinTelegram()">
         Join Telegram
     </a>
+
 </div>
 
 <script>
 
-const ADS_LINK = "https://www.profitablecpmratenetwork.com/jc4bzkf1?key=51e86312c82641cb4638ec283e05655d";
+const ADS_LINK = "https://www.profitablecpmratenetwork.com/jc4bzkf1?key=51e86312c82641cb4638ec283e05655d;
 const TELEGRAM_LINK = "https://www.profitablecpmratenetwork.com/jc4bzkf1?key=51e86312c82641cb4638ec283e05655d";
 
 let lastAdTime = 0;
 
-// Anti spam popup
-function showAds() {
+/* POPUP */
+function showAds(){
 
     let now = Date.now();
 
-    if (now - lastAdTime > 8000) {
+    if(now - lastAdTime > 8000){
 
         lastAdTime = now;
 
@@ -159,8 +184,8 @@ function showAds() {
     }
 }
 
-// Start
-function startVideo() {
+/* START */
+function startVideo(){
 
     showAds();
 
@@ -171,24 +196,24 @@ function startVideo() {
     document.getElementById("telegramBar").style.display = "block";
 }
 
-// Telegram
-function joinTelegram() {
+/* TELEGRAM */
+function joinTelegram(){
 
     showAds();
 
-    setTimeout(() => {
+    setTimeout(function(){
 
         window.open(TELEGRAM_LINK, "_blank");
 
-    }, 1000);
+    },1000);
 }
 
-// Klik foto
-window.onload = function() {
+/* KLIK FOTO */
+window.onload = function(){
 
     const fakeVideo = document.getElementById("fakeVideo");
 
-    fakeVideo.addEventListener("click", function() {
+    fakeVideo.addEventListener("click", function(){
 
         showAds();
 
